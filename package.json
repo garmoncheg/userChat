@@ -1,0 +1,19 @@
+{
+  "name": "userStory",
+  "version": "0.0.0",
+  "description": "This is the user story.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yuri Garmash",
+  "license": "MIT",
+  "dependencies": {
+    "morgan": "~1.6.1",
+    "body-parser": "~1.14.1",
+    "express": "~4.13.3",
+    "mongoose": "~4.2.8",
+    "bcrypt-nodejs": "0.0.3",
+    "jsonwebtoken": "~5.4.1"
+  }
+}
