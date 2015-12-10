@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="MyApp">
 <head>
-
 	<base href = "/">
 	<title>User Story</title>
 
-	<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TWITTER BOOTSTRAP !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-route.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.13/angular-route.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 	<!-- Services -->
 	<script type="text/javascript" src="app/services/authService.js"></script>
@@ -44,7 +40,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
 				<li ng-if="!main.loggedIn"><a href="/signup">Signup</a></li>
-				<li ng-if="main.loggedIn"><a href="">Hello {{ main.user.username }}</a></li>
+				<li ng-if="main.loggedIn"><a href="#">Hello {{ main.user.username }}</a></li>
 				<li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
 			</ul>
 
@@ -53,7 +49,7 @@
 </header>
 
 <main class="container">
-	<div ng-view></div>
+	<div ng-view=""></div>
 </main>
 
 </body>

@@ -1,0 +1,18 @@
+
+<div class="row">
+	<div class="col-md-3"></div>
+
+	<div class="col-md-4" ng-controller="StoryController as story">
+		<div class="row">
+			<div class="panel panne-success">
+				<div class="pannel-heading">Your stories:</div>
+				<div class="panel-body" ng-repeat="each in story.stories">
+					<p>{{ each.content }}</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="col-md-3"></div>
+</div>

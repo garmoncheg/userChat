@@ -1,6 +1,6 @@
 angular.module('storyCtrl', ['storyService'])
 
-.controller('StoryController', function(Story) {
+.controller('StoryController', function(Story, socketio) {
 	var vm = this;
 
 	Story.allStory()
@@ -8,15 +8,28 @@ angular.module('storyCtrl', ['storyService'])
 			vm.stories = data;
 		})
 
-	vm.createStory() = function() {
+	vm.createStory = function() {
 		vm.message = '';
 		Story.create(vm.storyData) 
 			.success(function(data){
-				vm.stories = '';
+				//vm.stories = '';
 				// clear up the form
 				vm.message = data;
+				
 
-				vm.stories.push(data);
 			});
+
 	};
+
+	socketio.on('story', function(data) {
+		vm.stories.push(data);
+	})
+})
+.controller('AllStoriesController', function(stories, socketio){
+	var vm = this;
+	vm.stories = stories.data;
+
+	socketio.on('story', function(data) {
+		vm.stories.push(data);
+	})
 })
