@@ -1,10 +1,10 @@
 <div class="jumbotron text-center" ng-if="!main.loggedIn">
 	<div>
-		<h1> If you have balls Sign Up! </h1>
+		<h1> Sign Up to write your messages! </h1>
 	</div>
 
 	<div>
-		<p> Login to write yourt story!</p>
+		<p> Login to write yourt message!</p>
 		<a href="/login" class="btn btn-primary">Login</a>
 	</div>
 </div>
@@ -15,7 +15,7 @@
 	<div class="col-md-4" ng-controller="StoryController as story">
 		<div class="row">
 			<div class="panel panel-primary">
-				<div class="panel-heading">Write your story:</div>
+				<div class="panel-heading">Write your message:</div>
 				<div class="panel-body">
 					<form ng-submit="story.createStory()">
 						<input class="form-control input-lg" type="text" name="story" ng-model="story.storyData.content" placeholder="......" required>
@@ -24,7 +24,7 @@
 			</div>
 
 			<div class="panel panel-success">
-				<div class="panel-heading">Your stories:</div>
+				<div class="panel-heading">Your messages:</div>
 				<div class="panel-body" ng-repeat="each in story.stories | reverse">
 					<p>{{ each.content }}</p>
 				</div>
