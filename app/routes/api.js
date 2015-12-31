@@ -20,9 +20,10 @@ module.exports = function(app, express, io) {
 
 	var api = express.Router();
 
-	api.post('/all_stories', function(req, res){
+	api.get('/all_stories', function(req, res){
 		Story.find({}, function(err, stories){
 			if (err) {
+				console.log(err);
 				res.send(err);
 				return;
 			}

@@ -14,6 +14,7 @@ angular.module('storyCtrl', ['storyService'])
 			.success(function(data){
 				//vm.stories = '';
 				// clear up the form
+				vm.storyData = {};
 				vm.message = data;
 				
 
@@ -25,11 +26,13 @@ angular.module('storyCtrl', ['storyService'])
 		vm.stories.push(data);
 	})
 })
-.controller('AllStoriesController', function(stories, socketio){
+
+.controller('AllStoriesController', function(stories, socketio) {
 	var vm = this;
 	vm.stories = stories.data;
 
 	socketio.on('story', function(data) {
 		vm.stories.push(data);
-	})
-})
+	});
+	
+});

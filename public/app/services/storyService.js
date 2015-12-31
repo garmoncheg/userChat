@@ -4,7 +4,7 @@ angular.module('storyService', [])
 	var storyFactory = {};
 
 	storyFactory.allStories = function() {
-		return $http.get('api/all_stories');
+		return $http.get('/api/all_stories');
 	}
 	storyFactory.create = function(storyData) {
 		return $http.post('/api', storyData);
@@ -16,7 +16,6 @@ angular.module('storyService', [])
 
 	return storyFactory;
  })
-
 .factory('socketio', function($rootScope) {
 	var socket = io.connect();
 	return {
@@ -24,13 +23,13 @@ angular.module('storyService', [])
 			socket.on(eventName, function() {
 				var args = arguments;
 				$rootScope.$apply(function() {
-					callback.apply(socket,args);
+					callback.apply(socket, args);
 				});
 			});
 		},
 		emit: function(eventName, data, callback) {
 			socket.emit(eventName, data, function() {
-				var args = argumenta;
+				var args = arguments;
 				$rootScope.apply(function() {
 					if(callback) {
 						callback.apply(socket, args);
@@ -39,4 +38,4 @@ angular.module('storyService', [])
 			});
 		}
 	};
-})
+});
