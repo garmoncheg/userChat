@@ -3,7 +3,7 @@ var Story = require('../model/story');
 var config = require("../../config");
 var secretKey = config.secretKey;
 var jsonwebtoken = require('jsonwebtoken');
-
+var _ = require('underscore');
 
 function createToken(user) {
 	var token = jsonwebtoken.sign({
@@ -28,7 +28,9 @@ module.exports = function(app, express, io) {
 				return;
 			}
 			res.json(stories);
-		});
+		})
+		.populate('creator')
+		.exec();
 	});
 
 	api.post('/signup', function(req, res){
@@ -128,11 +130,12 @@ module.exports = function(app, express, io) {
 			})
 		})
 		.get(function(req, res) {
-			Story.find({ creator: req.decoded.id }, function (err, stories) {
+			Story
+			.find({ creator: req.decoded.id }, function (err, stories) {
 				if (err) {
 					res.send(err);
 					return
-				} 
+				}
 				res.json(stories);
 			})
 		})
